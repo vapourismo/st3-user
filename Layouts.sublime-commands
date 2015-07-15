@@ -1,0 +1,82 @@
+[
+	{
+		"caption": "Layout: Single",
+		"args": {
+			"cols": [
+				0.0,
+				1.0
+			],
+			"rows": [
+				0.0,
+				1.0
+			],
+			"cells": [
+				[
+					0,
+					0,
+					1,
+					1
+				]
+			]
+		},
+		"command": "set_layout"
+	},
+	{
+		"caption": "Layout: Two Columns",
+		"args": {
+			"cols": [
+				0.0,
+				0.5,
+				1.0
+			],
+			"rows": [
+				0.0,
+				1.0
+			],
+			"cells": [
+				[
+					0,
+					0,
+					1,
+					1
+				],
+				[
+					1,
+					0,
+					2,
+					1
+				]
+			]
+		},
+		"command": "set_layout"
+	},
+	{
+		"caption": "Layout: Two Rows",
+		"args": {
+			"cols": [
+				0.0,
+				1.0
+			],
+			"rows": [
+				0.0,
+				0.5,
+				1.0
+			],
+			"cells": [
+				[
+					0,
+					0,
+					1,
+					1
+				],
+				[
+					0,
+					1,
+					1,
+					2
+				]
+			]
+		},
+		"command": "set_layout"
+    }
+]
