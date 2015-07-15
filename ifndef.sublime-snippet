@@ -1,0 +1,11 @@
+<snippet>
+	<content><![CDATA[
+#ifndef ${1:HEADER}
+#define ${1:HEADER}
+
+${2}
+
+#endif
+]]></content>
+	<tabTrigger>ifndef</tabTrigger>
+</snippet>
