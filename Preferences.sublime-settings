@@ -36,7 +36,7 @@
 	"caret_style": "wide",
 	"clang_format_on_save": false,
 	"close_windows_when_empty": false,
-	"color_scheme": "Packages/Theme - Centurion/Galea.tmTheme",
+	"color_scheme": "Packages/User/Color Scheme.tmTheme",
 	"copy_with_empty_selection": true,
 	"create_window_at_start": true,
 	"default_encoding": "UTF-8",
