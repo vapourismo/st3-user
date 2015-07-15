@@ -1,0 +1,157 @@
+%YAML 1.2
+---
+name: "Vapourismo - Elixir"
+file_extensions: [exs, ex]
+scope: source.elixir
+variables:
+  identifier: "[a-zA-Z_][a-zA-Z0-9_]*"
+  cap_identifier: "[A-Z][a-zA-Z0-9_]*"
+contexts:
+  main:
+    - include: define
+
+    - match: "\\b(import|use|require)\\b"
+      scope: keyword
+      push:
+        - match: "\n|,"
+          pop: true
+
+        - include: identifiers
+
+    - match: "\\b(nil|__MODULE__|false|true)\\b"
+      scope: constant
+
+    - match: "#"
+      push:
+        - meta_scope: comment
+
+        - match: "\n"
+          pop: true
+
+    - match: "\\b({{cap_identifier}})\\s*(\\.)"
+      captures:
+        1: entity
+        2: keyword
+
+    - match: "(:|@){{identifier}}\\b"
+      scope: constant
+
+    - match: "&\\d+"
+      scope: constant
+
+    - match: ":\""
+      scope: constant
+      push:
+        - meta_scope: constant
+
+        - match: "\""
+          pop: true
+
+    - match: "\\b(cond|case|receive|if|for|else|when|quote|do|end|fn|in|defoverridable|or|and)\\b"
+      scope: keyword
+
+    - match: "[\\.<>\\+\\-\\*/&\\|!=\\\\:]+"
+      scope: keyword
+
+    - match: "'''"
+      scope: string
+      push:
+        - meta_scope: string
+
+        - include: string_escape
+
+        - match: "'''"
+          scope: string
+          pop: true
+
+    - match: "\"\"\""
+      scope: string
+      push:
+        - meta_scope: string
+
+        - include: string_escape
+
+        - match: "\"\"\""
+          scope: string
+          pop: true
+
+    - match: "\'"
+      scope: string
+      push:
+        - meta_scope: string
+
+        - include: string_escape
+
+        - match: "\'"
+          scope: string
+          pop: true
+
+    - match: "\""
+      scope: string
+      push:
+        - meta_scope: string
+
+        - include: string_escape
+
+        - match: "\""
+          scope: string
+          pop: true
+
+    - match: "\\b{{identifier}}\\b"
+
+    - match: "\\d+"
+      scope: constant
+
+  string_escape:
+    - match: "\\\\x\\{\\d+\\}"
+      scope: constant
+
+    - match: "#{"
+      scope: constant
+      push:
+        - meta_scope: constant
+
+        - match: "}"
+          scope: constant
+          pop: true
+
+    - match: "\\\\[a-zA-Z\"\']"
+      scope: constant
+
+  identifiers:
+    - match: "\\b{{identifier}}\\b"
+      scope: entity
+
+    - match: "\\."
+      scope: keyword
+
+  function_params:
+    - match: "\\("
+      push: function_params_inner
+
+  function_params_inner:
+    - include: function_params
+
+    - include: main
+
+    - match: "\\)"
+      pop: true
+
+  define:
+    - match: "\\bdef(p|module|macro|macrop|protocol|impl|delegate|exception|struct|callback|spec|opaque|type|typep)?\\b"
+      scope: keyword
+      push:
+        - match: "\\bwhen\\b"
+          scope: keyword
+          pop: true
+
+        - match: ",|\n"
+          pop: true
+
+        - match: "\\bdo\\b"
+          scope: keyword
+          pop: true
+
+        - include: identifiers
+
+        - include: function_params
