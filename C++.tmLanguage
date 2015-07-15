@@ -18,7 +18,7 @@
 		<string>ipp</string>
 	</array>
 	<key>name</key>
-	<string>C++</string>
+	<string>Vapourismo - C++</string>
 	<key>patterns</key>
 	<array>
 		<dict>
