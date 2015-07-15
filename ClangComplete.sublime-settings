@@ -1,0 +1,22 @@
+{
+    "additional_options": [
+    	"-std=c++14",
+    	"-fmessage-length=0",
+        "-Wall",
+    	"-D__STRICT_ANSI__",
+    	"-DQT_NO_DEBUG",
+    	"-isystem",
+    	"/usr/lib/clang/3.6.1/include"
+    ],
+    	"default_include_paths": [
+		"/usr/include/c++/5.1.0",
+		"/usr/include/c++/5.1.0/x86_64-unknown-linux-gnu",
+		"/usr/include/c++/5.1.0/backward",
+		"/usr/lib/gcc/x86_64-unknown-linux-gnu/5.1.0/include",
+		"/usr/lib/gcc/x86_64-unknown-linux-gnu/5.1.0/include-fixed",
+		"/usr/local/include",
+	    "/usr/include",
+		"/usr/lib/clang/3.6.1/include",
+        "./**"
+	]
+}
