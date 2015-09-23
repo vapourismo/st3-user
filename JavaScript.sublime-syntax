@@ -1,0 +1,250 @@
+%YAML 1.2
+---
+name: Vapourismo - JavaScript
+file_extensions:
+  - js
+  - htc
+  - jsx
+first_line_match: ^#!/.*\b(node|js)$\n?
+scope: source.js
+contexts:
+  main:
+    - include: comments
+    - include: literal-number
+    - include: literal-operators
+    - include: literal-punctuation
+    - include: literal-quasi
+    - include: literal-regexp
+    - include: literal-string
+    - include: dict-key
+    - include: functions
+    - include: keywords
+    - include: special-variables
+    - include: special-constants
+
+  dict-key:
+    - match: "([a-zA-Z_][a-zA-Z_0-9]*):"
+      scope: entity.dict.key.js
+
+  functions:
+    - match: "\\b(function)\\s+([a-zA-Z_][a-zA-Z_0-9]*)\\b"
+      captures:
+        1: storage.modifier.js
+        2: entity.name.js
+
+  keywords:
+    - match: "\\b(if|else|while|for|catch|try|return|yield|switch|case|break)\\b"
+      scope: keyword.control.js
+
+    - match: "\\b(let|const|function|var)\\b"
+      scope: storage.modifier.js
+
+  special-variables:
+    - match: "\\b(this)\\b"
+      scope: entity.name.js
+
+  special-constants:
+    - match: "\\b(true|false|null|undefined)\\b"
+      scope: constant.js
+
+  comments:
+    - include: special-comments-conditional-compilation
+    - match: /\*\*(?!/)
+      captures:
+        0: punctuation.definition.comment.js
+      push:
+        - meta_scope: comment.block.documentation.js
+        - match: \*/
+          captures:
+            0: punctuation.definition.comment.js
+          pop: true
+    - match: /\*
+      captures:
+        0: punctuation.definition.comment.js
+      push:
+        - meta_scope: comment.block.js
+        - match: \*/
+          captures:
+            0: punctuation.definition.comment.js
+          pop: true
+    - match: (<!--|-->)
+      scope: comment.block.html.js
+      captures:
+        0: punctuation.definition.comment.js
+    - match: (//).*$\n?
+      scope: comment.line.double-slash.js
+      captures:
+        1: punctuation.definition.comment.js
+    - match: ^(#!).*$\n?
+      scope: comment.line.shebang.js
+      captures:
+        1: punctuation.definition.comment.js
+
+  literal-number:
+    - match: '(?i)(?:\B[-+]|\b)0x[0-9a-f]*\.(\B|\b[0-9]+)'
+      scope: invalid.illegal.numeric.hex.js
+    - match: '(?:\B[-+]|\b)0[0-9]+\.(\B|\b[0-9]+)'
+      scope: invalid.illegal.numeric.octal.js
+    - match: |-
+        (?xi)
+        (?:\B[-+])?
+        (?:
+          \b0b[0-1]*|                 # binary
+          \b0o[0-7]*|                 # octal
+          \b0x[0-9a-f]*|              # hex
+          (
+            \B\.[0-9]+|               # e.g. .999
+            \b[0-9]+(\.[0-9]*)?       # e.g. 999.999, 999. or 999
+          )(e[-+]?[0-9]+)?            # e.g. e+123, E-123
+        )
+      scope: constant.numeric.js
+    - match: '(?:\B[-+]|\b)(Infinity)\b'
+      scope: constant.language.infinity.js
+
+  literal-operators:
+    - match: (?<!\.)\b(delete|in|instanceof|new|of|typeof|void|with)\b
+      scope: storage.modifier.operator.js
+    - match: |-
+        (?x)
+        !(?!=)| # logical-not     right-to-left   right
+        &&    | # logical-and     left-to-right   both
+        \|\|  | # logical-or      left-to-right   both
+      scope: keyword.operator.logical.js
+    - match: |-
+        (?x)
+        =(?!=)| # assignment      right-to-left   both
+      scope: keyword.operator.assignment.js
+    - match: |-
+        (?x)
+        %=   | # assignment      right-to-left   both
+        &=   | # assignment      right-to-left   both
+        \*=  | # assignment      right-to-left   both
+        \+=  | # assignment      right-to-left   both
+        -=   | # assignment      right-to-left   both
+        /=   | # assignment      right-to-left   both
+        \^=  | # assignment      right-to-left   both
+        \|=  | # assignment      right-to-left   both
+        <<=  | # assignment      right-to-left   both
+        >>=  | # assignment      right-to-left   both
+        >>>= | # assignment      right-to-left   both
+      scope: keyword.operator.assignment.augmented.js
+    - match: |-
+        (?x)
+        ~    | # bitwise-not     right-to-left   right
+        <<   | # bitwise-shift   left-to-right   both
+        >>>  | # bitwise-shift   left-to-right   both
+        >>   | # bitwise-shift   left-to-right   both
+        &    | # bitwise-and     left-to-right   both
+        \^   | # bitwise-xor     left-to-right   both
+        \|     # bitwise-or      left-to-right   both
+      scope: keyword.operator.bitwise.js
+    - match: |-
+        (?x)
+        <=   | # relational      left-to-right   both
+        >=   | # relational      left-to-right   both
+        <    | # relational      left-to-right   both
+        >      # relational      left-to-right   both
+      scope: keyword.operator.relational.js
+    - match: |-
+        (?x)
+        ===  | # equality        left-to-right   both
+        !==  | # equality        left-to-right   both
+        ==   | # equality        left-to-right   both
+        !=     # equality        left-to-right   both
+      scope: keyword.operator.comparison.js
+    - match: |-
+        (?x)
+        --   | # decrement       n/a             right-or-left
+        \+\+ | # increment       n/a             right-or-left
+        /    | # division        left-to-right   both
+        %    | # modulus         left-to-right   both
+        \*   | # multiplication  left-to-right   both
+        \+   | # addition        left-to-right   both
+        -      # subtraction     left-to-right   both
+      scope: keyword.operator.arithmetic.js
+    - match: '\?|:'
+      scope: keyword.operator.ternary.js
+    - match: (?<!\.)\.\.\.
+      scope: keyword.operator.spread.js
+    - match: \.
+      scope: keyword.operator.accessor.js
+
+  literal-punctuation:
+    - match: \;
+      scope: punctuation.terminator.statement.js
+    - match: ","
+      scope: meta.delimiter.comma.js
+
+  literal-quasi:
+    - match: '([a-zA-Z$_][\w$_]*)?(`)'
+      captures:
+        1: entity.quasi.tag.name.js
+        2: punctuation.definition.quasi.begin.js
+      push:
+        - meta_scope: string.quasi.js
+        - match: "`"
+          captures:
+            0: punctuation.definition.quasi.end.js
+          pop: true
+        - include: string-content
+        - match: '\${'
+          captures:
+            0: punctuation.quasi.element.begin.js
+          push:
+            - meta_scope: entity.quasi.element.js
+            - match: "}"
+              captures:
+                0: punctuation.quasi.element.end.js
+              pop: true
+            - include: expression
+
+  literal-regexp:
+    - match: |-
+        (?x)
+        (?<=
+          \.|\(|,|{|}|\[|;|,|<|>|<=|>=|==|!=|===|!==|\+|-|\*|%|\+\+|--|<<|>>|>>>|&|\||\^|!|~|&&|\|\||\?|:|=|\+=|-=|\*=|%=|<<=|>>=|>>>=|&=|\|=|\^=|/|/=|
+          \Wnew|\Wdelete|\Wvoid|\Wtypeof|\Winstanceof|\Win|\Wdo|\Wreturn|\Wcase|\Wthrow|
+          ^new|^delete|^void|^typeof|^instanceof|^in|^do|^return|^case|^throw|^
+        )\s*
+        (/)
+        (?!/|\*|$)
+      captures:
+        1: punctuation.definition.string.begin.js
+      push:
+        - meta_scope: string.regexp.js
+        - match: "(/)([gimy]*)"
+          captures:
+            1: punctuation.definition.string.end.js
+            2: keyword.other.js
+          pop: true
+        - include: scope:source.regexp.js
+
+  literal-string:
+    - match: "'"
+      captures:
+        0: punctuation.definition.string.begin.js
+      push:
+        - meta_scope: string.quoted.single.js
+        - match: (')|(\n)
+          captures:
+            1: punctuation.definition.string.end.js
+            2: invalid.illegal.newline.js
+          pop: true
+        - include: string-content
+    - match: '"'
+      captures:
+        0: punctuation.definition.string.begin.js
+      push:
+        - meta_scope: string.quoted.double.js
+        - match: (")|(\n)
+          captures:
+            1: punctuation.definition.string.end.js
+            2: invalid.illegal.newline.js
+          pop: true
+        - include: string-content
+
+  string-content:
+    - match: \\\s*\n
+      scope: constant.character.escape.newline.js
+    - match: '\\(x[\da-fA-F]{2}|u[\da-fA-F]{4}|.)'
+      scope: constant.character.escape.js
