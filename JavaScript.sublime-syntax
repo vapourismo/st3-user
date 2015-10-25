@@ -36,11 +36,11 @@ contexts:
     - match: "\\b(if|else|while|for|catch|try|return|yield|switch|case|default|break|continue|throw)\\b"
       scope: keyword.control.js
 
-    - match: "\\b(let|const|function|var)\\b"
+    - match: "\\b(let|const|function|class|extends|static|get|set|var)\\b"
       scope: storage.modifier.js
 
   special-variables:
-    - match: "\\b(this)\\b"
+    - match: "\\b(this|super)\\b"
       scope: entity.name.js
 
   special-constants:
