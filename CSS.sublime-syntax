@@ -1,0 +1,101 @@
+%YAML 1.2
+---
+name: Vapourismo - CSS
+file_extensions:
+  - css
+  - scss
+scope: source.css
+contexts:
+  main:
+    - include: comments
+    - include: selectors
+    - include: keywords
+    - include: functions
+    - include: blocks
+
+  blocks:
+    - match: "{"
+      push: inside-blocks
+
+  inside-blocks:
+    - match: "}"
+      pop: true
+
+    - include: blocks
+    - include: functions
+    - include: keywords
+    - include: comments
+    - include: properties
+    - include: string-double
+    - include: string-single
+    - include: numeric-values
+
+  comments:
+    - match: /\*
+      scope: comment
+      push:
+        - meta_scope: comment
+        - match: \*/
+          pop: true
+
+  selectors:
+    - match: "(#|\\.)([\\-a-zA-Z_][\\-a-zA-Z0-9_]*)"
+      scope: entity
+
+    - match: "(:)([\\-a-zA-Z_][\\-a-zA-Z0-9_]*)"
+      scope: keyword
+
+    - match: "([\\-a-zA-Z_][\\-a-zA-Z0-9_]*)|(\\*)"
+      scope: entity
+
+  keywords:
+    - match: "@(import|keyframes|media)\\b"
+      scope: keyword
+
+  functions:
+    - match: "([\\-a-zA-Z_][\\-a-zA-Z0-9_]*)\\("
+      captures:
+        1: keyword
+
+  properties:
+    - match: "([\\-a-zA-Z_][\\-a-zA-Z0-9_]*)(:)"
+      captures:
+        1: storage.modifier
+        2: keyword.operator
+
+  numeric-values:
+    - match: '(#)([0-9a-fA-F]{3}|[0-9a-fA-F]{6})\b'
+      scope: constant
+      captures:
+        1: punctuation.definition.constant.css
+    - match: |-
+        (?x)
+            (?:-|\+)?(?:(?:[0-9]+(?:\.[0-9]+)?)|(?:\.[0-9]+))
+            ((?:px|pt|ch|cm|deg|dpi|dpcm|dppx|em|ex|in|grad|fr|mm|ms|pc|rad|rem|s|turn|vh|vw|vmin|vmax|x)\b|%)?
+      scope: constant.numeric.css
+
+  string-double:
+    - match: '"'
+      captures:
+        0: punctuation.definition.string.begin.css
+      push:
+        - meta_scope: string.quoted.double.css
+        - match: '"'
+          captures:
+            0: punctuation.definition.string.end.css
+          pop: true
+        - match: \\.
+          scope: constant.character.escape.css
+
+  string-single:
+    - match: "'"
+      captures:
+        0: punctuation.definition.string.begin.css
+      push:
+        - meta_scope: string.quoted.single.css
+        - match: "'"
+          captures:
+            0: punctuation.definition.string.end.css
+          pop: true
+        - match: \\.
+          scope: constant.character.escape.css
