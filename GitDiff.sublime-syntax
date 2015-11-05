@@ -1,0 +1,17 @@
+%YAML 1.2
+---
+name: Vapourismo - Git Diff
+scope: source.diff
+contexts:
+  main:
+    - match: "^\\+"
+      push:
+        - meta_scope: diff.addition
+        - match: $
+          pop: true
+
+    - match: "^\\-"
+      push:
+        - meta_scope: diff.deletion
+        - match: $
+          pop: true

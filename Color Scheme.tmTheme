@@ -127,6 +127,30 @@
 			</dict>
 		</dict>
 
+		<dict>
+			<key>name</key>
+			<string>Diff Addition</string>
+			<key>scope</key>
+			<string>diff.addition</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#449944</string>
+			</dict>
+		</dict>
+
+		<dict>
+			<key>name</key>
+			<string>Diff Deletion</string>
+			<key>scope</key>
+			<string>diff.deletion</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#993333</string>
+			</dict>
+		</dict>
+
 		<!--
 
 		<dict>
