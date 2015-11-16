@@ -88,7 +88,7 @@
 		"CVS",
 		".cabal-sandbox",
 		"dist",
-		"bin"
+		"build",
 	],
 	"font_face": "Inconsolata",
 	"font_options":
