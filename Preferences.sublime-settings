@@ -89,6 +89,7 @@
 		".cabal-sandbox",
 		"dist",
 		"build",
+		"node_modules"
 	],
 	"font_face": "Inconsolata",
 	"font_options":
