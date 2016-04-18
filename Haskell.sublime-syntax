@@ -86,15 +86,8 @@ contexts:
         - match: "\""
           pop: true
 
-    - match: "'"
+    - match: "'.'"
       scope: string
-      push:
-        - meta_scope: string
-
-        - include: escape_sequence
-
-        - match: "'"
-          pop: true
 
   escape_sequence:
     - match: "\\\\[0abfnrtv\"&'\\\\]"

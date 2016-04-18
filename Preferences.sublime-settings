@@ -91,13 +91,13 @@
 		"build",
 		"node_modules"
 	],
-	"font_face": "Inconsolata",
+	"font_face": "Iosevka",
 	"font_options":
 	[
 		"no_italic",
 		"subpixel_antialias"
 	],
-	"font_size": 10.5,
+	"font_size": 10,
 	"gutter": true,
 	"highlight_line": false,
 	"highlight_modified_tabs": false,
