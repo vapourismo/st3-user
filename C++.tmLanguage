@@ -141,7 +141,7 @@
 		<key>vardecl</key>
 		<dict>
 			<key>match</key>
-			<string>([a-zA-Z_][a-zA-Z0-9_]*)\b\s*(const\s*)?([\*\&]*)\s*((const\s+)|(restrict\s+))*\b([a-zA-Z_][a-zA-Z0-9_]*)\b\s*(=|,|;|\)|\[)</string>
+			<string>([a-zA-Z_][a-zA-Z0-9_]*)\b\s*(const\s*)?([\*&amp;]*)\s*((const\s+)|(restrict\s+))*\b([a-zA-Z_][a-zA-Z0-9_]*)\b\s*(=|,|;|\)|\[)</string>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
@@ -165,7 +165,7 @@
 		<key>rettypedecl</key>
 		<dict>
 			<key>match</key>
-			<string>(\w+\s+|^\s*)([a-zA-Z_][a-zA-Z0-9_]*)\b\s*(const\s*)?([\*\&]*)\s*((const\s+)|(restrict\s+))*\b([a-zA-Z_][a-zA-Z0-9_]*)\b\s*\(</string>
+			<string>(\w+\s+|^\s*)([a-zA-Z_][a-zA-Z0-9_]*)\b\s*(const\s*)?([\*&amp;]*)\s*((const\s+)|(restrict\s+))*\b([a-zA-Z_][a-zA-Z0-9_]*)\b\s*\(</string>
 			<key>captures</key>
 			<dict>
 				<key>2</key>
@@ -190,7 +190,7 @@
 		<key>punctuation</key>
 		<dict>
 			<key>match</key>
-			<string>(\.|\-&gt;|:|\?|\.\.\.|[&lt;&gt;=\*/\+\-|&\^%!]+)</string>
+			<string>(\.|\-&gt;|:|\?|\.\.\.|[&lt;&gt;=\*/\+\-|&amp;\^%!]+)</string>
 			<key>name</key>
 			<string>keyword.operator.c++</string>
 		</dict>
@@ -226,7 +226,7 @@
 		<key>type_ptr_conv</key>
 		<dict>
 			<key>match</key>
-			<string>\(\s*(const\s+)?([a-zA-Z_][a-zA-Z0-9_]*)\s*([\*]+|&)\s*\)</string>
+			<string>\(\s*(const\s+)?([a-zA-Z_][a-zA-Z0-9_]*)\s*([\*]+|&amp;)\s*\)</string>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
