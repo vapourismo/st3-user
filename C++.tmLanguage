@@ -199,7 +199,7 @@
 		<key>keywords</key>
 		<dict>
 			<key>match</key>
-			<string>\b(delete|friend|extern|static|inline|virtual|operator|try|catch|noexcept|throw|return|private|public|protected|typeid|sizeof|sizeof\.\.\.|decltype|template|if|while|for|do|switch|case|default|break|continue|else|new)\b</string>
+			<string>\b(delete|friend|extern|static|inline|virtual|operator|try|catch|noexcept|throw|return|private|public|protected|typeid|sizeof|sizeof\.\.\.|decltype|template|if|while|for|do|switch|case|default|break|continue|else|new|static_assert|constexpr)\b</string>
 			<key>name</key>
 			<string>keyword.control.c++</string>
 		</dict>
@@ -208,7 +208,7 @@
 		<key>modifiers</key>
 		<dict>
 			<key>match</key>
-			<string>\b(volatile|constexpr|const|unsigned|signed)\b</string>
+			<string>\b(volatile|const|unsigned|signed)\b</string>
 			<key>name</key>
 			<string>storage.type.modifier.c++</string>
 		</dict>
