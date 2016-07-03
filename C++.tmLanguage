@@ -199,7 +199,7 @@
 		<key>keywords</key>
 		<dict>
 			<key>match</key>
-			<string>\b(delete|friend|extern|static|inline|virtual|operator|try|catch|noexcept|throw|return|private|public|protected|typeid|sizeof|sizeof\.\.\.|decltype|template|if|while|for|do|switch|case|default|break|continue|else|new|static_assert|constexpr)\b</string>
+			<string>\b(delete|friend|extern|static|inline|virtual|operator|try|catch|throw|return|private|public|protected|typeid|sizeof|sizeof\.\.\.|decltype|template|if|while|for|do|switch|case|default|break|continue|else|new|static_assert|constexpr|noexcept|using)\b</string>
 			<key>name</key>
 			<string>keyword.control.c++</string>
 		</dict>
@@ -245,7 +245,7 @@
 		<key>const_types</key>
 		<dict>
 			<key>match</key>
-			<string>(const|constexpr)\s+([a-zA-Z_][a-zA-Z0-9_]*)</string>
+			<string>(const|volatile)\s+([a-zA-Z_][a-zA-Z0-9_]*)</string>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
@@ -469,7 +469,7 @@
 		</dict>
 
 		<!-- using namespace ...; -->
-		<key>using_namespace</key>
+		<!-- <key>using_namespace</key>
 		<dict>
 			<key>begin</key>
 			<string>(using)\s+((namespace)\s+)?</string>
@@ -499,7 +499,7 @@
 					<string>#comments</string>
 				</dict>
 			</array>
-		</dict>
+		</dict> -->
 
 		<!-- cpp_casts -->
 		<key>cpp_casts</key>
