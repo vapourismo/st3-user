@@ -14,6 +14,15 @@ contexts:
         - match: "\n"
           pop: true
 
+    - match: "-- ="
+      scope: comment
+      push:
+        - match: "[^\\n]+"
+          scope: comment.section
+
+        - match: "\\n"
+          pop: true
+
     - match: "--"
       scope: comment
       push:
@@ -21,7 +30,7 @@ contexts:
 
         - match: "@((\\\\@|[^@\n])+)@"
           captures:
-            1: constant
+            1: comment.quote
 
         - match: "'([A-Z][a-zA-Z0-9_]*)'"
           captures:

@@ -55,6 +55,7 @@
 				<string>foreground</string>
 			</dict>
 		</dict>
+
 		<dict>
 			<key>name</key>
 			<string>Comment</string>
@@ -64,6 +65,32 @@
 			<dict>
 				<key>foreground</key>
 				<string>#666666</string>
+			</dict>
+		</dict>
+
+		<dict>
+			<key>name</key>
+			<string>Comment Section</string>
+			<key>scope</key>
+			<string>comment.section</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#666666</string>
+				<key>fontStyle</key>
+				<string>bold</string>
+			</dict>
+		</dict>
+
+		<dict>
+			<key>name</key>
+			<string>Comment Quote</string>
+			<key>scope</key>
+			<string>comment.quote</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#b5b5b5</string>
 			</dict>
 		</dict>
 
