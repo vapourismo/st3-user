@@ -33,10 +33,10 @@ contexts:
         2: entity.name.js
 
   keywords:
-    - match: "\\b(if|else|while|for|catch|try|return|yield|switch|case|default|break|continue|import|from|as|throw)\\b"
+    - match: "\\b(function|class|extends|if|else|while|for|catch|try|return|yield|switch|case|default|break|continue|import|from|as|throw)\\b"
       scope: keyword.control.js
 
-    - match: "\\b(let|const|function|class|extends|static|get|set|var)\\b"
+    - match: "\\b(let|const|static|get|set|var)\\b"
       scope: storage.modifier.js
 
   special-variables:

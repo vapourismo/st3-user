@@ -40,6 +40,14 @@ contexts:
           captures:
             1: entity
 
+        - match: "\"([A-Z][a-zA-Z0-9_]*)\""
+          captures:
+            1: storage
+
+        - match: "\"([a-z_][a-zA-Z0-9_]*)\""
+          captures:
+            1: entity
+
         - match: "\n"
           pop: true
 
@@ -78,7 +86,7 @@ contexts:
       scope: keyword
 
     # Type definitions
-    - match: "\\b(data|newtype|type)\\s+([A-Z][a-zA-Z0-9_]*[']*)"
+    - match: "\\b(data|newtype|type\\s+family|type\\s+instance|type)\\s+([A-Z][a-zA-Z0-9_]*[']*)"
       captures:
         1: keyword
         2: storage
@@ -115,12 +123,12 @@ contexts:
         - match: "\""
           pop: true
 
-    - match: "'.'"
+    - match: "'(\\\\(NUL|SOH|STX|ETX|EOT|ENQ|ACK|BEL|DLE|DC1|DC2|DC3|DC4|NAK|SYN|ETB|CAN|SUB|ESC|DEL|FS|GS|RS|US|SP|EN|BS|HT|LF|VT|FF|CR|SO|SI|[0abfnrtv\"&'\\\\])|.)'"
       scope: string
 
   escape_sequence:
     - match: "\\\\[0abfnrtv\"&'\\\\]"
       scope: constant
 
-    - match: "\\\\(NUL|SOH|STX|ETX|EOT|ENQ|ACK|BEL|DLE|DC1|DC2|DC3|DC4|NAK|SYN|ETB|CAN|SUB|ESC|DEL|FS|GS|RS|US|SP|EN|BS|HT|LF|VT|FF|CR|SO|SI)"
+    - match: "\\\\(NUL|SOH|STX|ETX|EOT|ENQ|ACK|BEL|DLE|DC1|DC2|DC3|DC4|NAK|SYN|ETB|CAN|SUB|ESC|DEL|FS|GS|RS|US|SP|EN|BS|HT|LF|VT|FF|CR|SO|SI|.)"
       scope: constant
