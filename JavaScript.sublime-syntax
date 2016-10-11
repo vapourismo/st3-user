@@ -33,7 +33,7 @@ contexts:
         2: entity.name.js
 
   keywords:
-    - match: "\\b(function|class|extends|if|else|while|for|catch|try|return|yield|switch|case|default|break|continue|import|from|as|throw)\\b"
+    - match: "\\b(function|class|extends|if|else|while|for|catch|try|return|await|async|yield|switch|case|default|export|break|continue|import|from|as|throw)\\b"
       scope: keyword.control.js
 
     - match: "\\b(let|const|static|get|set|var)\\b"
@@ -198,26 +198,26 @@ contexts:
               pop: true
             - include: expression
 
-  literal-regexp:
-    - match: |-
-        (?x)
-        (?<=
-          \.|\(|,|{|}|\[|;|,|<|>|<=|>=|==|!=|===|!==|\+|-|\*|%|\+\+|--|<<|>>|>>>|&|\||\^|!|~|&&|\|\||\?|:|=|\+=|-=|\*=|%=|<<=|>>=|>>>=|&=|\|=|\^=|/|/=|
-          \Wnew|\Wdelete|\Wvoid|\Wtypeof|\Winstanceof|\Win|\Wdo|\Wreturn|\Wcase|\Wthrow|
-          ^new|^delete|^void|^typeof|^instanceof|^in|^do|^return|^case|^throw|^
-        )\s*
-        (/)
-        (?!/|\*|$)
-      captures:
-        1: punctuation.definition.string.begin.js
-      push:
-        - meta_scope: string.regexp.js
-        - match: "(/)([gimy]*)"
-          captures:
-            1: punctuation.definition.string.end.js
-            2: keyword.other.js
-          pop: true
-        - include: scope:source.regexp.js
+  # literal-regexp:
+  #   - match: |-
+  #       (?x)
+  #       (?<=
+  #         \.|\(|,|{|}|\[|;|,|<|>|<=|>=|==|!=|===|!==|\+|-|\*|%|\+\+|--|<<|>>|>>>|&|\||\^|!|~|&&|\|\||\?|:|=|\+=|-=|\*=|%=|<<=|>>=|>>>=|&=|\|=|\^=|/|/=|
+  #         \Wnew|\Wdelete|\Wvoid|\Wtypeof|\Winstanceof|\Win|\Wdo|\Wreturn|\Wcase|\Wthrow|
+  #         ^new|^delete|^void|^typeof|^instanceof|^in|^do|^return|^case|^throw|^
+  #       )\s*
+  #       (/)
+  #       (?!/|\*|$)
+  #     captures:
+  #       1: punctuation.definition.string.begin.js
+  #     push:
+  #       - meta_scope: string.regexp.js
+  #       - match: "(/)([gimy]*)"
+  #         captures:
+  #           1: punctuation.definition.string.end.js
+  #           2: keyword.other.js
+  #         pop: true
+  #       - include: scope:source.regexp.js
 
   literal-string:
     - match: "'"
