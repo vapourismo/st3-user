@@ -32,21 +32,25 @@ contexts:
           captures:
             1: comment.quote
 
-        - match: "'([A-Z][a-zA-Z0-9_]*)'"
+        - match: "'(([A-Z][a-zA-Z0-9_]*\\.)*)([A-Z][a-zA-Z0-9_]*)'"
           captures:
             1: storage
+            3: storage
 
-        - match: "'([a-z_][a-zA-Z0-9_]*)'"
-          captures:
-            1: entity
-
-        - match: "\"([A-Z][a-zA-Z0-9_]*)\""
+        - match: "'(([A-Z][a-zA-Z0-9_]*\\.)*)([a-z_][a-zA-Z0-9_]*)'"
           captures:
             1: storage
+            3: entity
 
-        - match: "\"([a-z_][a-zA-Z0-9_]*)\""
+        - match: "\"(([A-Z][a-zA-Z0-9_]*\\.)*)([A-Z][a-zA-Z0-9_]*)\""
           captures:
-            1: entity
+            1: storage
+            3: storage
+
+        - match: "\"(([A-Z][a-zA-Z0-9_]*\\.)*)([a-z_][a-zA-Z0-9_]*)\""
+          captures:
+            1: storage
+            3: entity
 
         - match: "\n"
           pop: true
@@ -82,7 +86,7 @@ contexts:
     - match: "\\b(module|instance|class|deriving)\\b"
       scope: keyword
 
-    - match: "\\b(if|then|else|where|let|in|do|case|of)\\b"
+    - match: "\\b(if|then|else|where|let|in|do|case|of|forall|default)\\b"
       scope: keyword
 
     # Type definitions
