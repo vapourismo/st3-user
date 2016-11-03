@@ -42,12 +42,12 @@ contexts:
             1: storage
             3: entity
 
-        - match: "\"(([A-Z][a-zA-Z0-9_]*\\.)*)([A-Z][a-zA-Z0-9_]*)\""
+        - match: "\"(([A-Z][a-zA-Z0-9_']*\\.)*)([A-Z][a-zA-Z0-9_']*)\""
           captures:
             1: storage
             3: storage
 
-        - match: "\"(([A-Z][a-zA-Z0-9_]*\\.)*)([a-z_][a-zA-Z0-9_]*)\""
+        - match: "\"(([A-Z][a-zA-Z0-9_']*\\.)*)([a-z_][a-zA-Z0-9_']*)\""
           captures:
             1: storage
             3: entity
@@ -73,7 +73,7 @@ contexts:
           pop: true
 
     # Operators
-    - match: "[\\+\\-\\*/%!<>.$:=\\\\|&\\^@#]+"
+    - match: "[\\+\\-\\*/%!<>.$:=\\\\|&\\^@#\\?]+"
       scope: keyword
 
     - match: "`([A-Z][a-zA-Z0-9_]*\\.)*([a-zA-Z_][a-zA-Z0-9_]*)`"
@@ -83,30 +83,24 @@ contexts:
     - match: "\\b(import|qualified|as|hiding|foreign|ccall|unsafe)\\b"
       scope: keyword
 
-    - match: "\\b(module|instance|class|deriving)\\b"
+    - match: "\\b(module|instance|class|deriving|data|newtype|type|family)\\b"
       scope: keyword
 
     - match: "\\b(if|then|else|where|let|in|do|case|of|forall|default)\\b"
       scope: keyword
 
-    # Type definitions
-    - match: "\\b(data|newtype|type\\s+family|type\\s+instance|type)\\s+([A-Z][a-zA-Z0-9_]*[']*)"
-      captures:
-        1: keyword
-        2: storage
-
     # Type names and constructors
-    - match: "\\b[A-Z][a-zA-Z0-9_]*[']*\\b"
+    - match: "\\b[A-Z][a-zA-Z0-9_']*\\b?"
       scope: storage
 
     # Entities
-    - match: "^\\s*([a-z_][a-zA-Z0-9_]*[']*)\\s*(::)"
+    - match: "^\\s*([a-z_][a-zA-Z0-9_']*)\\s*(::)"
       captures:
         1: entity
         2: keyword
 
     # Identifiers
-    - match: "\\b[a-z_][a-zA-Z0-9_]*[']*"
+    - match: "\\b[a-z_][a-zA-Z0-9_']*"
 
     # Numbers
     - match: "0[xX][0-9a-fA-F]+|[0-9]+\\.[0-9]+([fF]?)|[0-9]+"
