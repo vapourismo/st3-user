@@ -2,7 +2,8 @@
 	"enable_ghc_mod": false,
 	"enable_hsdev": false,
 	"enable_hdevtools": true,
-	"add_to_PATH": ["/home/ole/.cabal/bin"],
+	"add_to_PATH": ["/home/ole/.cabal/bin", "/home/ole/.local/bin"],
 	"ghc_opts": ["-fno-warn-tabs"],
-	"ghci_opts": ["-fno-warn-tabs"]
+	"ghci_opts": ["-fno-warn-tabs"],
+	"use_improved_syntax": false
 }

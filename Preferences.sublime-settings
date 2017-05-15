@@ -92,11 +92,7 @@
 		"node_modules"
 	],
 	"font_face": "Iosevka",
-	"font_options":
-	[
-		"no_italic",
-		"subpixel_antialias"
-	],
+	"font_options": [],
 	"font_size": 10,
 	"gutter": true,
 	"highlight_line": false,
