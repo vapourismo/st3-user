@@ -4,7 +4,8 @@
 	"color_scheme": "Packages/User/Color Scheme.tmTheme",
 	"enable_tab_scrolling": false,
 	"ensure_newline_at_eof_on_save": true,
-	"folder_exclude_patterns": [
+	"folder_exclude_patterns":
+	[
 		".svn",
 		".git",
 		".hg",
@@ -18,13 +19,20 @@
 	"font_face": "Iosevka",
 	"font_size": 11,
 	"highlight_modified_tabs": true,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
 	"margin": 0,
 	"overlay_scroll_bars": "disabled",
-	"rulers": [100],
+	"rulers":
+	[
+		100
+	],
 	"save_on_focus_lost": true,
 	"scroll_speed": 0.0,
 	"shift_tab_unindent": true,
-	"skin": "DA UI/Elegant",
+	"skin": "DA UI/Minimal",
 	"tab_size": 4,
 	"theme": "DA.sublime-theme",
 	"trim_trailing_white_space_on_save": true,
