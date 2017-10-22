@@ -46,13 +46,13 @@
 				<string>#FFFFFF33</string>
 
 				<key>bracketsForeground</key>
-				<string>#9966CC</string>
+				<string>#6699CC</string>
 
 				<key>bracketsOptions</key>
 				<string>foreground underline</string>
 
 				<key>bracketContentsForeground</key>
-				<string>#9966CC</string>
+				<string>#6699CC</string>
 
 				<key>bracketContentsOptions</key>
 				<string>foreground underline</string>
