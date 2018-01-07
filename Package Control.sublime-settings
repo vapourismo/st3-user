@@ -5,8 +5,12 @@
 	],
 	"installed_packages":
 	[
+		"AdvancedNewFile",
 		"DA UI",
 		"Darkula Color Scheme",
-		"Package Control"
+		"Git",
+		"GitGutter",
+		"Package Control",
+		"PackageResourceViewer"
 	]
 }

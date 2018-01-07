@@ -73,7 +73,7 @@ contexts:
           pop: true
 
     # Operators
-    - match: "[\\+\\-\\*/%!<>.$:=\\\\|&\\^@#\\?]+"
+    - match: "[\\+\\-\\*/%!<>.$:=\\\\|&\\^@#\\?~]+"
       scope: keyword
 
     - match: "`([A-Z][a-zA-Z0-9_]*\\.)*([a-zA-Z_][a-zA-Z0-9_]*)`"

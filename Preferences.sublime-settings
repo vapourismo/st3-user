@@ -37,5 +37,5 @@
 	"theme": "DA.sublime-theme",
 	"trim_trailing_white_space_on_save": true,
 	"update_check": false,
-	"use_tab_stops": false
+	"use_tab_stops": true
 }
