@@ -80,7 +80,7 @@ contexts:
       scope: keyword
 
     # Keywords
-    - match: "\\b(import|qualified|as|hiding|foreign|ccall|unsafe)\\b"
+    - match: "\\b(import|export|qualified|as|hiding|foreign|ccall|unsafe)\\b"
       scope: keyword
 
     - match: "\\b(module|instance|class|deriving|data|newtype|type|family)\\b"
@@ -89,15 +89,15 @@ contexts:
     - match: "\\b(if|then|else|where|let|in|do|case|of|forall|default)\\b"
       scope: keyword
 
+    # Entities
+    - match: "^([a-z_][a-zA-Z0-9_']*)\\s*((::)|$)"
+      captures:
+        1: entity.name.function
+        2: keyword
+
     # Type names and constructors
     - match: "\\b[A-Z][a-zA-Z0-9_']*\\b?"
       scope: storage
-
-    # Entities
-    - match: "^\\s*([a-z_][a-zA-Z0-9_']*)\\s*(::)"
-      captures:
-        1: entity
-        2: keyword
 
     # Identifiers
     - match: "\\b[a-z_][a-zA-Z0-9_']*"

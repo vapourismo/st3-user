@@ -14,7 +14,9 @@
 		"CVS",
 		"dist",
 		"build",
-		"node_modules"
+		"node_modules",
+		"dist-newstyle",
+		"__pycache__"
 	],
 	"font_face": "Iosevka",
 	"font_size": 11,
