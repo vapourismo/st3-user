@@ -1,0 +1,4 @@
+{
+	"shell_cmd": "/home/ole/.cabal/bin/cabal new-build",
+	"working_dir": "${project_path:${folder}}"
+}
