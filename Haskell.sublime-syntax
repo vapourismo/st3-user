@@ -83,7 +83,7 @@ contexts:
     - match: "\\b(import|export|qualified|as|hiding|foreign|ccall|unsafe)\\b"
       scope: keyword
 
-    - match: "\\b(module|instance|class|deriving|data|newtype|type|family)\\b"
+    - match: "\\b(module|instance|class|deriving|data|newtype|type|family|pattern)\\b"
       scope: keyword
 
     - match: "\\b(if|then|else|where|let|in|do|case|of|forall|default)\\b"

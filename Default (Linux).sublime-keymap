@@ -31,8 +31,10 @@
 	// Groups
 	{ "keys": ["alt+1"], "command": "focus_group", "args": { "group": 0 } },
 	{ "keys": ["alt+2"], "command": "focus_group", "args": { "group": 1 } },
+	{ "keys": ["alt+3"], "command": "focus_group", "args": { "group": 2 } },
 	{ "keys": ["alt+shift+1"], "command": "move_to_group", "args": { "group": 0 } },
 	{ "keys": ["alt+shift+2"], "command": "move_to_group", "args": { "group": 1 } },
+	{ "keys": ["alt+shift+3"], "command": "move_to_group", "args": { "group": 2 } },
 
 	// Scrolling
 	{ "keys": ["alt+up"], "command": "scroll_lines", "args": {"amount": 1.0 } },
