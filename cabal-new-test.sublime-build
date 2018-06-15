@@ -1,0 +1,4 @@
+{
+	"shell_cmd": "/home/ole/.cabal/bin/cabal new-test",
+	"working_dir": "${folder}"
+}
